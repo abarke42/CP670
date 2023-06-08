@@ -12,6 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidAssignments"
         tools:targetApi="31">
+
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:label="@string/titleActivityLogin"
+            android:theme="@style/Theme.AppCompat">
+        </activity>
+        <activity
+            android:name=".ListItemsActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat">
+        </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
