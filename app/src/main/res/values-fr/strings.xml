@@ -7,6 +7,9 @@
     <string name="titleActivityLogin">Ouvrir une session</string>
     <string name="loginText">Identifiant</string>
     <string name="passwordText">Mot de passe</string>
+    <string name="passwordHint">Inserer le mot de passe</string>
+    <string name="loginHint">Courriel</string>
+    <string name="loginButton">Entrer</string>
     <string name="switchText">Que fait ceci?</string>
     <string name="RadioButton">Bouton radio</string>
     <string name="CheckBox">Case à cocher</string>
