@@ -105,6 +105,8 @@ public final class LoginActivity extends AppCompatActivity
 
         myEditor.commit();
 
-        Toast.makeText(LoginActivity.this, getString(R.string.save_message), Toast.LENGTH_LONG).show();
+        //For debugging
+        /*Helper help1 = new Helper();
+        //help1.print(getString(R.string.save_message));*/
     }
 }

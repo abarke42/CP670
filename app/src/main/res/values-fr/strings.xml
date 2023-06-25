@@ -21,4 +21,9 @@
     <string name="save_message">Sauvegardé</string>
     <string name="validate_login">Verifiez que votre courriel est valide!</string>
     <string name="validate_password">Tapez votre mot de passe!</string>
+
+    <string name="dialog_title">Case à cocher coché</string>
+    <string name="dialog_message">Veuillez fermer l\'activité?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Annuler</string>
 </resources>

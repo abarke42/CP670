@@ -19,7 +19,7 @@
         android:text="@string/RadioButton" />
 
     <CheckBox
-        android:id="@+id/checkBox"
+        android:id="@+id/list_items_checkBox"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_row="0"
@@ -43,7 +43,7 @@
         tools:ignore="MissingClass,UseSwitchCompatOrMaterialXml" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/list_imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_row="1"
