@@ -1,5 +1,6 @@
 package com.example.androidassignments;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -25,6 +26,7 @@ public final class ListItemsActivity extends AppCompatActivity implements Compou
 
     Switch list_switch;
     ImageButton list_imageButton;
+    @SuppressLint("QueryPermissionsNeeded")
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(layout.activity_list_items);
@@ -107,18 +109,12 @@ public final class ListItemsActivity extends AppCompatActivity implements Compou
 
         if(isChecked)    //Switch is on
         {
-            CharSequence text = "Switch is On";// "Switch is Off"
-            int duration = Toast.LENGTH_SHORT; //= Toast.LENGTH_LONG if Off
-
-            Toast toast = Toast.makeText(this, text, duration); //this is the ListActivity
+            Toast toast = Toast.makeText(this, R.string.switch_on, Toast.LENGTH_SHORT); //this is the ListActivity
             toast.show(); //display your message box
         }
         else    //Switch is off
         {
-            CharSequence text = "Switch is Off";
-            int duration = Toast.LENGTH_LONG;
-
-            Toast toast = Toast.makeText(this, text, duration);
+            Toast toast = Toast.makeText(this, R.string.switch_off, Toast.LENGTH_LONG);
             toast.show();
         }
     }

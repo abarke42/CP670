@@ -7,7 +7,7 @@
     <string name="titleActivityLogin">Ouvrir une session</string>
     <string name="loginText">Identifiant</string>
     <string name="passwordText">Mot de passe</string>
-    <string name="passwordHint">Inserer le mot de passe</string>
+    <string name="passwordHint">Inserez le mot de passe</string>
     <string name="loginHint">Courriel</string>
     <string name="loginButton">Entrer</string>
     <string name="switchText">Que fait ceci?</string>
@@ -22,9 +22,13 @@
     <string name="validate_login">Verifiez que votre courriel est valide!</string>
     <string name="validate_password">Tapez votre mot de passe!</string>
 
+    <string name="switch_on">L\'interrupteur est allumé</string>
+    <string name="switch_off">L\'interrupteur est fermé</string>
+
     <string name="dialog_title">Case à cocher coché</string>
     <string name="dialog_message">Veuillez fermer l\'activité?</string>
     <string name="ok">OK</string>
     <string name="cancel">Annuler</string>
+
     <string name="response_text">ListItemsActivity passé: Mon information à partager</string>
 </resources>

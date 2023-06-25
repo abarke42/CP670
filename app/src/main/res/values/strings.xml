@@ -22,9 +22,13 @@
     <string name="validate_login">Please enter a valid e-mail address!</string>
     <string name="validate_password">Please enter your password!</string>
 
+    <string name="switch_on">Switch is on</string>
+    <string name="switch_off">Switch is off</string>
+
     <string name="dialog_title">Checkbox clicked</string>
     <string name="dialog_message">Do you want to finish the activity?</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+
     <string name="response_text">ListItemsActivity passed: My information to share</string>
 </resources>
