@@ -1,12 +1,10 @@
 package com.example.androidassignments;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
-import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
@@ -15,19 +13,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.androidassignments.R.layout;
 
 import org.jetbrains.annotations.Nullable;
 
-import java.io.FileOutputStream;
-import java.util.Date;
-
 public final class ListItemsActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
     private final String tag = "ListItemsActivity";
     private static final int REQUEST_IMAGE_CAPTURE = 1;
-
-    private Activity activity;
-    private AlertDialog dialog;
 
     Switch list_switch;
     ImageButton list_imageButton;
@@ -37,14 +30,11 @@ public final class ListItemsActivity extends AppCompatActivity implements Compou
 
         //Camera for image button
         list_imageButton = this.findViewById(R.id.list_imageButton);
-        list_imageButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                /*if (takePictureIntent.resolveActivity(ListItemsActivity.getPackageManager()) != null) {
-                    ListItemsActivity.startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-                }*/
-            }
+        list_imageButton.setOnClickListener(view -> {
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            /*if (takePictureIntent.resolveActivity(ListItemsActivity.getPackageManager()) != null) {
+                ListItemsActivity.startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+            }*/
         });
 
         //Switch business
@@ -52,30 +42,25 @@ public final class ListItemsActivity extends AppCompatActivity implements Compou
         list_switch.setOnCheckedChangeListener(this);
 
         //Checkbox business
-        CheckBox list_checkBox = ( CheckBox ) findViewById( R.id.list_items_checkBox);
-        list_checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-        {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
-            {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ListItemsActivity.this);
+        CheckBox list_checkBox = findViewById( R.id.list_items_checkBox);
+        list_checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(ListItemsActivity.this);
 // 2. Chain together various setter methods to set the dialog characteristics
-                builder.setMessage(R.string.dialog_message)
+            builder.setMessage(R.string.dialog_message)
 
-                        .setTitle(R.string.dialog_title)
-                        .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // Yes to ending the activity
-                                finish();
-                            }
-                        })
-                        .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // User cancelled the dialog
-                            }
-                        })
-                        .show();
-            }
+                    .setTitle(R.string.dialog_title)
+                    .setPositiveButton(R.string.ok, (dialog, id) -> {
+                        // Yes to ending the activity
+                        Intent resultIntent = new Intent(  );
+                        resultIntent.putExtra("Response", "Here is my response");
+                        setResult(Activity.RESULT_OK, resultIntent);
+
+                        finish();
+                    })
+                    .setNegativeButton(R.string.cancel, (dialog, id) -> {
+                        // User cancelled the dialog
+                    })
+                    .show();
         });
     }
 

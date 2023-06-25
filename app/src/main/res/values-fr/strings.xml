@@ -26,4 +26,5 @@
     <string name="dialog_message">Veuillez fermer l\'activité?</string>
     <string name="ok">OK</string>
     <string name="cancel">Annuler</string>
+    <string name="response_text">ListItemsActivity passé: Mon information à partager</string>
 </resources>

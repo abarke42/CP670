@@ -1,10 +1,11 @@
 package com.example.androidassignments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.ComponentActivity;
 import com.example.androidassignments.R.layout;
@@ -19,14 +20,11 @@ public final class MainActivity extends ComponentActivity {
 
         Button main_button = findViewById(R.id.main_button);
 
-        main_button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
+        main_button.setOnClickListener(view -> {
 
-                //Switch to another activity
-                Intent intent = new Intent(MainActivity.this, ListItemsActivity.class);
-                startActivityForResult(intent, 10);
-            }
+            //Switch to another activity
+            Intent intent = new Intent(MainActivity.this, ListItemsActivity.class);
+            startActivityForResult(intent, 10);
         });
         //starts the ListItemsActivity activity using startActivityForResult( ). Use 10 for the request code.
     }
@@ -36,6 +34,12 @@ public final class MainActivity extends ComponentActivity {
         if(requestCode == 10)
         {
             Log.i("ACTIVITY_NAME", "Returned to MainActivity.onActivityResult");
+        }
+        if (responseCode == Activity.RESULT_OK){
+            String messagePassed = data.getStringExtra("Response");
+
+            Toast toast = Toast.makeText(this, R.string.response_text, Toast.LENGTH_SHORT);
+            toast.show();
         }
     }
     protected void onStart() {
