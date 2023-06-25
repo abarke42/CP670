@@ -20,4 +20,5 @@
     <string name="key_username">username</string>
     <string name="save_message">Saved</string>
     <string name="validate_login">Please enter a valid e-mail address!</string>
+    <string name="validate_password">Please enter your password!</string>
 </resources>

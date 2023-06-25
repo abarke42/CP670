@@ -24,20 +24,27 @@ public final class LoginActivity extends AppCompatActivity
     }
 
     public void onLoginClicked(View v){
+        String password_entered = ((EditText) findViewById(R.id.passwordInput)).getText().toString();
 
-        //Get user input
-        String new_username_entered = ((EditText) findViewById(R.id.loginInput)).getText().toString();
-
-        //If valid e-mail address, then save it for next time
-        if (android.util.Patterns.EMAIL_ADDRESS.matcher(new_username_entered).matches()) {
-            saveUserData();
-            //Switch to another activity
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
+        //User must enter password
+        if (password_entered.equals("")) {
+            Toast.makeText(LoginActivity.this, getString(R.string.validate_password), Toast.LENGTH_LONG).show();
         }
-        //else ask the user to input it again
         else {
-            Toast.makeText(LoginActivity.this, getString(R.string.validate_login), Toast.LENGTH_LONG).show();
+            //Get user input
+            String new_username_entered = ((EditText) findViewById(R.id.loginInput)).getText().toString();
+
+            //If valid e-mail address, then save it for next time
+            if (android.util.Patterns.EMAIL_ADDRESS.matcher(new_username_entered).matches()) {
+                saveUserData();
+                //Switch to another activity
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+            //else ask the user to input it again
+            else {
+                Toast.makeText(LoginActivity.this, getString(R.string.validate_login), Toast.LENGTH_LONG).show();
+            }
         }
     }
 

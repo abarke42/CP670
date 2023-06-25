@@ -20,4 +20,5 @@
     <string name="key_username">username</string>
     <string name="save_message">Sauvegardé</string>
     <string name="validate_login">Verifiez que votre courriel est valide!</string>
+    <string name="validate_password">Tapez votre mot de passe!</string>
 </resources>
