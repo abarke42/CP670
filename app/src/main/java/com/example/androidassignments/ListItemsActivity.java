@@ -2,6 +2,7 @@ package com.example.androidassignments;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -28,13 +29,13 @@ public final class ListItemsActivity extends AppCompatActivity implements Compou
         super.onCreate(savedInstanceState);
         this.setContentView(layout.activity_list_items);
 
-        //Camera for image button
+        //Camera business for image button
         list_imageButton = this.findViewById(R.id.list_imageButton);
         list_imageButton.setOnClickListener(view -> {
             Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            /*if (takePictureIntent.resolveActivity(ListItemsActivity.getPackageManager()) != null) {
-                ListItemsActivity.startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-            }*/
+            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+            }
         });
 
         //Switch business
@@ -45,7 +46,6 @@ public final class ListItemsActivity extends AppCompatActivity implements Compou
         CheckBox list_checkBox = findViewById( R.id.list_items_checkBox);
         list_checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(ListItemsActivity.this);
-// 2. Chain together various setter methods to set the dialog characteristics
             builder.setMessage(R.string.dialog_message)
 
                     .setTitle(R.string.dialog_title)
@@ -54,7 +54,6 @@ public final class ListItemsActivity extends AppCompatActivity implements Compou
                         Intent resultIntent = new Intent(  );
                         resultIntent.putExtra("Response", "Here is my response");
                         setResult(Activity.RESULT_OK, resultIntent);
-
                         finish();
                     })
                     .setNegativeButton(R.string.cancel, (dialog, id) -> {
@@ -90,22 +89,17 @@ public final class ListItemsActivity extends AppCompatActivity implements Compou
         Log.i(this.tag, "Finished ListItemsActivity.");
     }
 
-   /* public void saveImage(Bitmap imageBitmap) {
-        Date date = new Date();
-        String strDateFormat = "hh:mm:ss a";
-        java.text.DateFormat dateFormat =
-                new java.text.SimpleDateFormat(strDateFormat);
-        String formattedDate = dateFormat.format(date);
-
-        try {
-            FileOutputStream outputStream =
-                    anActivity.openFileOutput(formattedDate, Context.MODE_PRIVATE);
-            imageBitmap.compress(Bitmap.CompressFormat.PNG, 80, outputStream);
-            outputStream.flush();
-            outputStream.close();
-        } catch (Exception e) {
+    //When OK is selected after taking a picture, image is saved on the button.
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            ImageButton btnImg = findViewById(R.id.list_imageButton);
+            btnImg.setImageBitmap(imageBitmap);
         }
-    }*/
+    }
 
     //Required to use onCheckedChanges instead of setOnCheckedChanges to implement the CompoundButton class
     @Override
