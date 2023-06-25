@@ -19,6 +19,7 @@ public final class MainActivity extends ComponentActivity {
         this.setContentView(layout.activity_main);
 
         Button main_button = findViewById(R.id.main_button);
+        Button chat_button = findViewById(R.id.chat_button);
 
         main_button.setOnClickListener(view -> {
 
@@ -26,7 +27,10 @@ public final class MainActivity extends ComponentActivity {
             Intent intent = new Intent(MainActivity.this, ListItemsActivity.class);
             startActivityForResult(intent, 10);
         });
-        //starts the ListItemsActivity activity using startActivityForResult( ). Use 10 for the request code.
+
+        chat_button.setOnClickListener(view -> {
+            Log.i(tag, "User clicked Start Chat");
+        });
     }
 
     protected void onActivityResult(int requestCode, int responseCode, Intent data){

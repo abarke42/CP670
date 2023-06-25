@@ -4,6 +4,8 @@
     <string name="app_name">DevoirsAndroid</string>
     <string name="hello_message">Bonjour tout le monde!</string>
     <string name="ButtonText">Je suis un bouton</string>
+    <string name="chatText">Commencer chat</string>
+
     <string name="titleActivityLogin">Ouvrir une session</string>
     <string name="loginText">Identifiant</string>
     <string name="passwordText">Mot de passe</string>
