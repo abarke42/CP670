@@ -1,59 +1,44 @@
 package com.example.androidassignments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.androidassignments.R.layout;
 import org.jetbrains.annotations.Nullable;
 
-public final class LoginActivity extends AppCompatActivity {
+public final class LoginActivity extends AppCompatActivity
+{
     private final String tag = "LoginActivity";
 
-    EditText email;
-    EditText password;
-    Button button;
-    SharedPreferences sharedpref;
-    String emailStr, passStr;
-
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        this.setContentView(layout.activity_login);
+        this.setContentView(R.layout.activity_login);
+        //Load user data
+        loadUserData();
+    }
 
-        email = findViewById(R.id.loginInput);
-        password = findViewById(R.id.passwordInput);
-        button = findViewById(R.id.loginButton);
+    public void onLoginClicked(View v){
 
-        sharedpref = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+        //Get user input
+        String new_username_entered = ((EditText) findViewById(R.id.loginInput)).getText().toString();
 
-        //if (SharedPreferences.getString("DefaultE-mail", "default@gmail.com") = null)
-
-        button.setOnClickListener(new View.OnClickListener(){
-         @Override
-         public void onClick(View view){
-             //Save username and password in shared preferences
-             emailStr = email.getText().toString();
-             passStr = password.getText().toString();
-
-             SharedPreferences.Editor editor = sharedpref.edit();
-
-             editor.putString("email", emailStr);
-             editor.putString("password", passStr);
-             editor.apply();
-             Toast.makeText(LoginActivity.this, "User information saved", Toast.LENGTH_LONG).show();
-
-             //Switch to another activity
-             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-             startActivity(intent);
-         }
-        });
+        //If valid e-mail address, then save it for next time
+        if (android.util.Patterns.EMAIL_ADDRESS.matcher(new_username_entered).matches()) {
+            saveUserData();
+            //Switch to another activity
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+        //else ask the user to input it again
+        else {
+            Toast.makeText(LoginActivity.this, getString(R.string.validate_login), Toast.LENGTH_LONG).show();
+        }
     }
 
     protected void onStart() {
@@ -79,5 +64,40 @@ public final class LoginActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i(this.tag, "Destroyed LoginActivity.");
+    }
+
+    private void loadUserData() {
+
+        //Get shared preferences
+        String file_name = getString(R.string.pref_filename);
+        SharedPreferences mPrefs = getSharedPreferences(file_name, MODE_PRIVATE);
+
+        String username_key = getString(R.string.key_username);
+
+        //Display username email, default if none
+        String new_username_value = mPrefs.getString(username_key, getString(R.string.default_email));
+        ((EditText) findViewById(R.id.loginInput)).setText(new_username_value);
+
+        //Toast.makeText(LoginActivity.this, getString(R.string.save_message), Toast.LENGTH_LONG).show();
+    }
+
+
+    private void saveUserData() {
+
+        //Get shared preferences
+        String file_name = getString(R.string.pref_filename);
+        SharedPreferences mPrefs = getSharedPreferences(file_name, MODE_PRIVATE);
+
+        //Save new value for username email
+        SharedPreferences.Editor myEditor = mPrefs.edit();
+        myEditor.clear();
+        String email_key  = getString(R.string.key_username);
+        String new_username_entered = ((EditText) findViewById(R.id.loginInput))
+                .getText().toString();
+        myEditor.putString(email_key, new_username_entered);
+
+        myEditor.commit();
+
+        Toast.makeText(LoginActivity.this, getString(R.string.save_message), Toast.LENGTH_LONG).show();
     }
 }
