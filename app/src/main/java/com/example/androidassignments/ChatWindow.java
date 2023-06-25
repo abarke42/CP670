@@ -2,6 +2,7 @@ package com.example.androidassignments;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -30,6 +31,13 @@ Button sendButton;
             chatMessageArray.add(chatMessage);
         });
     }
+    private class ChatAdapter extends ArrayAdapter {
+        private static final int resource = 0;
+        ChatAdapter ca = new ChatAdapter(this.getContext());
+//    ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(this, R.layout.activity_chat_window);
 
-
+        public ChatAdapter(Context ctx) {
+            super(ctx, 0);
+        }
+    }
 }
