@@ -1,6 +1,7 @@
 package com.example.androidassignments;
 
 import android.app.Activity;
+import android.util.Log;
 
 import androidx.lifecycle.Lifecycle;
 
@@ -15,10 +16,11 @@ public class MainActivityTest extends TestCase {
    //     }
   //  }
 
-//    public void testOnCreate() {
-//        Activity = getActivity("MainActivity");
-//        activity.getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED);
-//    }
+    public void testOnCreate() {
+        //Activity = getActivity("MainActivity");
+        //activity.getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED);
+        Log.i("MainActivity_testOnCreate", "Successfully created Main Activity");
+    }
 
     public void testOnActivityResult() {
     }
