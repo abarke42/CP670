@@ -8,14 +8,14 @@
 
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/messageText"
         android:layout_width="347dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="TextView" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="right"
