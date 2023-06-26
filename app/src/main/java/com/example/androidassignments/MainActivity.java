@@ -30,6 +30,8 @@ public final class MainActivity extends ComponentActivity {
 
         chat_button.setOnClickListener(view -> {
             Log.i(tag, "User clicked Start Chat");
+            Intent intent = new Intent(MainActivity.this, ChatWindow.class);
+            startActivity(intent);
         });
     }
 

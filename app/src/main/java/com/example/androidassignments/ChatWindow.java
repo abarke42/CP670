@@ -16,10 +16,10 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class ChatWindow extends AppCompatActivity {
-ListView listView;
-EditText chatText;
-Button sendButton;
-ArrayList<String> chatMessageArray = new ArrayList<>();
+    ListView listView;
+    EditText chatText;
+    Button sendButton;
+    ArrayList<String> chatMessageArray = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,17 +50,17 @@ ArrayList<String> chatMessageArray = new ArrayList<>();
         public View getView(int position, View convertView, ViewGroup parent){
             LayoutInflater inflater = ChatWindow.this.getLayoutInflater();
 
-            View result = null ;
+            View result;
 
             if(position%2 == 0) {
-           //     result = inflater.inflate(R.layout.chat_row_incoming, null);
+                     result = inflater.inflate(R.layout.chat_row_incoming, null);
             }
             else
             {
-           //     result = inflater.inflate(R.layout.chat_row_outgoing, null);
+                     result = inflater.inflate(R.layout.chat_row_outgoing, null);
             }
-            //TextView message = (TextView)result.findViewById(R.id.messageText);
-            //message.setText(   getItem(position)  ); // get the string at position
+            TextView message = result.findViewById(R.id.messageText);
+            message.setText(   getItem(position)  ); // get the string at position
             return result;
         }
 
